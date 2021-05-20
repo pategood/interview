@@ -1,0 +1,15 @@
+http和https的区别
+
+https协议是  由SSL  + HTTP协议构建的可进行加密传输,身份认证 ,比http协议安全
+
+https需要ca申请证书,要钱
+http信息是明文传输, https是加密传输
+连接方式不同,用的端口号也不同,http是80,https是443
+
+https://pic002.cnblogs.com/images/2012/339704/2012071410212142.gif
+
+
+
+https缺点:
+  HTTPS协议握手阶段比较耗时间
+  SSL证书通常需要绑定IP，不能在同一IP上绑定多个域名

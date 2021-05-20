@@ -1,0 +1,15 @@
+
+hash模式:
+  通过再连接后添加#+路由名字,根据匹配url的变换,触发hashchange时间,
+    动态的渲染出页面  
+
+
+
+
+history 模式: 
+使用浏览器的history API  的pushState 和 replaceState
+  通过pushState操作浏览器的history对象,改变url地址,
+  同时结合window.onpopstate 监听浏览器的返回和前进事件来实现无刷新跳转页面
+
+重点是 history模式需要服务端进行配置,否则刷星页面会产生404错误
+        (原因:我们通过history API来操作页面的跳转,而不是真的去服务器请求页面)

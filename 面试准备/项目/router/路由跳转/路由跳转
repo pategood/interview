@@ -1,0 +1,18 @@
+一种是声明式，使用<router-link>声明跳转，to属性定义跳转的参数。
+
+另一种是编程式，使用 router.go()、router.push()、router.replace()方法进行跳转，
+
+
+
+
+
+
+什么时候用 push、go, 什么时候用 replace
+
+push会把当前页面加入 history 记录可通过history.go(-1)返回原页面
+
+replace方法则会在 history 记录里面替换掉当前记录，
+
+  如果你在跳转后的新页面使用history.go(-1)返回原页面，
+    它不会回到跳转前的页面，会回到上上个页面，
+  如果上上个页面没有记录，则不会跳转。

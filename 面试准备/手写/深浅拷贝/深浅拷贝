@@ -1,0 +1,46 @@
+一行代码实现深拷贝
+  JSON.parse(JSON.stringify(obj))
+
+利用 JSON.stringify 将js对象序列化（JSON字符串）
+再利用JSON.parse来反序列化来还原js对象
+
+  缺点: 
+   1. 如果js对象有RegExp正则、Error,则序列化后为空对象
+   2. 如果js对象里面有function、undefined,则序列化后会把丢失
+   3. 如果js对象内存在NaN、Infinity、-Infinity则序列化后会变成null
+
+   4. 如果js对象里面有new出来的对象,则序列化后该对象会丢失constructor的指向
+      (原因:JSON.stringify()只能序列化对象的可枚举的自有属性)
+   
+   5. 如果js对象里面有时间对象(),则序列号后时间是字符串,而不是时间对象
+   6. 如果js对象不能出现循环引用的情况
+
+
+function shallow(object){
+  if(!object||typeof object !== 'object') return;
+  let newObject =Array.isArray(object) ? [] :{};
+  for(let key in object){
+    if(object.hasOwnProperty(key) ){
+      newObject[key]=object[key]
+    }
+  }
+  return newObject;
+}
+
+深拷贝
+function deepCopy(object) {
+  if (object===null) return null;
+  if(!object||typeof object !=='object') return object;
+
+  if(object instanceof RegExp) {
+    return new RegExp(object);
+  }
+  if(object instanceof Data) {
+    return new Data(object);
+  }
+  let newObject =object.hasOwnProperty(object) ?[]:{};
+  for(let key in object){
+    newObject[key]=object[key]
+  }
+  return newObject;
+}

@@ -1,0 +1,36 @@
+vue2生命周期
+
+11个
+
+beforeCreate: 此时(el元素)data和methods还未初始化
+
+created:可以使用data和methods等等,但是dom未生成,但可以异步请求数据
+
+beforeMount 模板已经编译成render函数,虚拟dom已经创建好了
+            但未挂载到页面,
+            可以看到标签间的双花括号，但数据还未渲染到页面中
+
+mounted  dom挂载好了
+
+beforeUpdate  修改数据,但dom的数据还没更新
+
+updated   更新dom的数据
+
+beforeDestroy: 清除vue实例与DOM的关联之前
+
+destroyed  清除vue实例与DOM的关联之后
+          (Dom元素还在，只是不再受vue控制)
+
+
+activated  被 keep-alive 缓存的组件激活时调用。
+            缓存组件
+            服务器端渲染期间不被调用
+
+
+deactivated 被 keep-alive 缓存的组件停用时调用。
+            服务器端渲染期间不被调用
+
+errorCaptured : 
+        当捕获一个来自子孙组件的错误时被调用。
+        此钩子会收到三个参数：错误对象、发生错误的组件实例以及一个包含错误来源信息的字符串。
+          此钩子可以返回 false 以阻止该错误继续向上传播。
