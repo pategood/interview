@@ -1,0 +1,16 @@
+BFC是块级格式上下文
+  BFC内部的元素布局与外部互不影响
+
+
+触发条件:
+  1.根元素<html>
+  2.float   除了none属性外的所有属性
+  3.overflow  (非visible的属性)
+  4.display:  inline-block、flex、inline-flex、table-cell 等等
+  5.position: absolute、fixed
+
+
+特性及作用:
+  属于同一个BFC的两个相邻容器的上下margin会重叠   解决办法: 拆成两个BFC
+
+  计算BFC高度时 浮动元素也会参与计算            解决办法: 给父节点激活BFC
