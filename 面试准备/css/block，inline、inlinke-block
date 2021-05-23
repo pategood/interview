@@ -1,0 +1,20 @@
+display:block 
+  块级元素,独占一行    
+  默认:自动填满父元素宽度
+  可以设置宽高   以及margin和padding
+
+
+display:inline
+
+  行内元素 无法独占一行   
+  多个元行内素会排在同一行  自动换行
+  宽度随内容变化,无法设置宽高
+  无法设置width,height
+  水平方向:
+    padding-left, padding-right, margin-left, margin-right都产生边距效果
+  垂直方向:
+    padding-top, padding-bottom, margin-top, margin-bottom不会有边距效果
+
+display:inline-block :
+  会自动换行
+  具有block的宽度高度特性又具有inline的同行特性

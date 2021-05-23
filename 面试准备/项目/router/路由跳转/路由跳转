@@ -1,4 +1,6 @@
 一种是声明式，使用<router-link>声明跳转，to属性定义跳转的参数。
+<router-link to="/news/222"></router-link>
+用{{$route.params.id}}在组件标签里面获取参数
 
 另一种是编程式，使用 router.go()、router.push()、router.replace()方法进行跳转，
 

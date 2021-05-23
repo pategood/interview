@@ -6,7 +6,7 @@ get 和post 区别
                         request payload。  
     
            application/x-www-form-urlencoded； 数据格式为form data(默认)
-           application/json:   数据格式为form data:  request payload。
+           application/json:   数据格式为json:  request payload。
 
              request payload 是 一种格式 既json格式
 

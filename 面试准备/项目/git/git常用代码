@@ -1,0 +1,20 @@
+查看状态 git status
+      查看改变内容 git diff
+      跟踪所以改动过的文件 git add .
+      跟踪指定的文件 git add <file>
+
+      删除文件 git rm <file>
+
+      提交所有更新过的文件 git commit -m "commit message"
+
+
+      显示所有的本地分支 git branch
+      创建新分支 git branch <new branch>
+      删除本地分支 git branch -d <branch>
+
+合并与衍合{
+      git merge <branch>
+      git rebase <branch>
+    }
+
+    从远程库获取代码 git fetch <remote>

@@ -1,0 +1,40 @@
+    一.router-link进行路由导航，传递参数
+      父组件
+        使用<router-link to="/需要跳转的路由路径/需要传递的参数">
+
+      子组件:
+        this.$route.params.id
+
+      路由配置:path: '/cart/:id'
+
+    二. 刷新不会丢失
+      父组件:
+      this.$router.push({
+        path: `/cart/${id}`,
+      })
+    需要在路由里面配置 path: '/cart/:id',  页面获取参数this.$route.params.id
+
+    三.刷新会丢失
+      用name来匹配路由,通过params来传递参数。
+      this.$router.push({
+        name: 'particulars',
+        params: {
+          id: id
+        }
+      })
+      路由里面常规配置就行了 path: '/cart',
+      子组件通过this.$route.params.id 获取参数
+
+    四.
+      使用path来匹配路由，然后通过query来传递参数
+        query传递的参数会显示在url后面?id=？
+        this.$router.push({
+          path: '/cart',
+          query: {
+            id: id
+          }
+        })
+        路由里面常规配置就行了 path: '/cart',
+      子组件通过this.$route.query.id 获取参数
+
+      获取参数用route
