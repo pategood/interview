@@ -1,0 +1,31 @@
+
+
+手写get
+var xhr = new XMLHttpRequest()
+xhr.open('get','url'+params)
+xhr.send()
+xhr.onload=function(){
+  console,log(xhr.responseText)
+}
+
+传统表单的post
+var xhr=new XMLHttpRequest()
+xhr.open('post','url')
+xhr.setRequest('Content-Type','application/x-www-form-urlencoded')
+xhr.send(params)
+xhr.onload=function(){ console.log(xhr.responseText)}
+
+
+json格式的post
+var xhr=new XMLHttpRequest()
+xhr.open('post','url')
+xhr.setRequest('Content-Type', 'application' )
+xhr.send(JSON.stringify{name:'曾'})
+xhr.onload=function() {console.log(xhr.responseText)}
+
+
+Ajax封装
+
+function ajax(options){
+  
+}

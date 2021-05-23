@@ -1,1 +1,11 @@
 visibility和display:none区别
+
+
+display: none，元素以及它的所有后代元素都会隐藏,且不会占位
+
+visibility: hidden  隐藏元素,占位,影响页面布局
+        元素还在那,只是不可见
+
+
+
+CSS3的transition支持visibility属性，但是并不支持display

@@ -14,7 +14,7 @@ axios错误拦截
       firstName:'Fred',
       lastName:'Flintstone'
     })
-    axios.all同时发送多个请求  原理是:promise.all
+    axios.all、promise.all   同时发送多个请求  
 
   //使用拦截器对接口返回的数据进行处理,
   例如返回的数据内有status、data、msg,结果拦截后只返回data
@@ -100,7 +100,7 @@ axios错误拦截
         (刷新不丢失)
 
         path: '/cart' query: {id:id}
-          路: /cart/   (常)       
+          路: /cart   (常)       
           取参 this.$route.query.id
         (刷新不丢失)   不支持props传参)
 
@@ -291,6 +291,14 @@ logo设置:
         })
       }
     },
+
+  微信支付:
+    h5支付
+    接口返回的content是支付连接,转换为二维码就可以扫码支付
+      转换为二维码使用QRCode插件转换的
+
+    支付轮询
+    使用Modal模块
 
 
 

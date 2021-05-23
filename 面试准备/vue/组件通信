@@ -1,0 +1,33 @@
+组件通信
+  数据总线 创建一个vue实例, 
+    在组件里面使用$emit和$on来触发事件和监听事件
+
+  vuex
+    Vuex 和 localStorage 组合使用
+  
+  
+  props/$emit    (父子组件通信)
+
+① 访问组件实例
+  $parent / $children
+    $parent / $children 访问父 / 子实例
+  
+  ref   
+    如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；
+    如果用在子组件上，引用就指向组件实例
+
+
+兄弟组件通信:
+  数据总线  
+    一.创建一个bus.js
+        里面
+          import Vue from 'vue';  
+          export default new Vue();     
+    二.需要使用eventBud的组件内import
+    三、发布Bus消息的组件
+      Bus.$emit('getTarget', event.target); 
+    四、接收Bus消息的组件
+      组件接收
+        Bus.$on('getTarget', target => {  
+          console.log(target);  
+        }); 

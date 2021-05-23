@@ -16,17 +16,6 @@
    6. 如果js对象不能出现循环引用的情况
 
 
-function shallow(object){
-  if(!object||typeof object !== 'object') return;
-  let newObject =Array.isArray(object) ? [] :{};
-  for(let key in object){
-    if(object.hasOwnProperty(key) ){
-      newObject[key]=object[key]
-    }
-  }
-  return newObject;
-}
-
 深拷贝
 function deepCopy(object) {
   if (object===null) return null;
@@ -41,6 +30,20 @@ function deepCopy(object) {
   let newObject =object.hasOwnProperty(object) ?[]:{};
   for(let key in object){
     newObject[key]=object[key]
+  }
+  return newObject;
+}
+
+
+浅拷贝
+
+function shallow(object){
+  if(!object||typeof object !== 'object') return;
+  let newObject =Array.isArray(object) ? [] :{};
+  for(let key in object){
+    if(object.hasOwnProperty(key) ){
+      newObject[key]=object[key]
+    }
   }
   return newObject;
 }
