@@ -10,7 +10,7 @@ Observer: class 观察者,将对象的属性都转换为响应式
       defineReactive:
         由于get必须要有返回值,以防返回值写死,需要一个变量中转,
         所以使用闭包来封装定义的函数
-        *** 执行defineReactive同时会创建一个Dep实例
+        *** 执行defineReactive同时会创建一个Dep实例,所以data对象内每一层的key都有Dep实例
 
       observe(data),判断对象是否存在__ob__,
         存在则表示已经是响应式的了
@@ -28,12 +28,20 @@ Observer: class 观察者,将对象的属性都转换为响应式
           因为赋值的可能也是对象,也需要转化为响应式 
 
 
+Watcher: 数据的订阅者，
+  set修改数据时会调用dep.notify来遍历subs的watcher,依次执行watcher的update来更新视图
 
-Watcher: 数据的订阅者，数据的变化会通知到Watcher，
-         然后由Watcher进行相应的操作，例如更新视图
 
-Dep: 存储响应式对象的依赖关系,当数据变化时，会被Observer观察到，
-      然后由Dep通知到Watcher
+
+Dep: 存储响应式对象的依赖关系,
+      subs:存放该数据的watcher 依赖关系
+      notify:遍历subs,依次执行subs[i].update来更新视图
+      depend:get时执行,用来建立watcher和数据的依赖关系
+
+
+
+
+Compile：编译模板，初始化视图，收集依赖（更新函数、watcher创建）
 
 
 https://segmentfault.com/img/bVJiAp?w=651&h=327
