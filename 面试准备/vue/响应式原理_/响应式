@@ -1,0 +1,78 @@
+https://pic2.zhimg.com/80/v2-b94d747fd273ec8224e6349f701430fd_720w.jpg
+
+vue2的响应式原理:
+  使用Object.defineProperty来进行数据劫持
+  发布订阅者模式
+
+Observer: class 观察者,将对象的属性都转换为响应式
+        利用Object.defineProperty()重写对象属性的get和set
+
+      defineReactive:
+        由于get必须要有返回值,以防返回值写死,需要一个变量中转,
+        所以使用闭包来封装定义的函数
+        *** 执行defineReactive同时会创建一个Dep实例
+
+      observe(data),判断对象是否存在__ob__,
+        存在则表示已经是响应式的了
+        不存在则进行new Observer(value)
+
+        new Observer(value)时,会对value的子属性(key)进行
+        遍历执行defineReactive(value,k),
+        执行defineReactive时还会进行observe(val),执行更深一层的响应式转换
+
+     注意:       
+        defineReactive(value,k)里面的第三个参数默认值为value[key].value就是更深一层的value
+     
+        defineReactive
+          里面的Object.defineProperty的set方法还会进行observe(newValue),
+          因为赋值的可能也是对象,也需要转化为响应式 
+
+
+
+Watcher: 数据的订阅者，数据的变化会通知到Watcher，
+         然后由Watcher进行相应的操作，例如更新视图
+
+Dep: 存储响应式对象的依赖关系,当数据变化时，会被Observer观察到，
+      然后由Dep通知到Watcher
+
+
+https://segmentfault.com/img/bVJiAp?w=651&h=327
+
+
+
+
+
+
+
+
+
+
+
+
+
+get() {
+  console.log('你试图访问' + key + '属性');
+  // 如果现在处于依赖收集阶段
+  if (Dep.target) {
+      dep.depend();
+      if (childOb) {
+          childOb.dep.depend();
+      }
+  }
+  return val;
+},
+
+
+
+
+set(newValue) {
+  console.log('你试图改变' + key + '属性', newValue);
+  if (val === newValue) {
+      return;
+  }
+  val = newValue;
+  // 当设置了新值，这个新值也要被observe
+  childOb = observe(newValue);
+  // 发布订阅模式，通知dep
+  dep.notify();
+}
