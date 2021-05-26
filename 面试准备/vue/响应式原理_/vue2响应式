@@ -27,13 +27,16 @@ Observer: class 观察者,将对象的属性都转换为响应式
           里面的Object.defineProperty的set方法还会进行observe(newValue),
           因为赋值的可能也是对象,也需要转化为响应式 
 
+  问题:
+    
 
-Watcher: 数据的订阅者，
+Watcher: 数据的订阅者，vue中有三种watcher
+  每个组件实例会有相应的 watcher 实例,组件渲染时会触发相应data的get,进行收集依赖watcher
   set修改数据时会调用dep.notify来遍历subs的watcher,依次执行watcher的update来更新视图
 
 
 
-Dep: 存储响应式对象的依赖关系,
+Dep: 存储、添加、删除响应式对象的依赖关系,向依赖watcher发送消息等功能
       subs:存放该数据的watcher 依赖关系
       notify:遍历subs,依次执行subs[i].update来更新视图
       depend:get时执行,用来建立watcher和数据的依赖关系
@@ -43,6 +46,14 @@ Dep: 存储响应式对象的依赖关系,
 
 Compile：编译模板，初始化视图，收集依赖（更新函数、watcher创建）
 
+注意:
+  getter/setter只能追踪一个数据是否被修改，无法追踪新增属性和删除属性。如果是删除属性，我们可以用vm.$delete实现，那如果是新增属性，该怎么办呢？
+    1）可以使用 Vue.set(location, a, 1) 方法向嵌套对象添加响应式属性;
+    2）也可以给这个对象重新赋值，比如data.location = {...data.location,a:1}
+
+  Object.defineProperty 不能监听数组的变化，需要进行数组方法的重写
+
+。
 
 https://segmentfault.com/img/bVJiAp?w=651&h=327
 
@@ -69,8 +80,6 @@ get() {
   }
   return val;
 },
-
-
 
 
 set(newValue) {

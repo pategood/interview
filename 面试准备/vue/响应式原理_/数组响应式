@@ -1,0 +1,95 @@
+ 
+数组的响应式
+
+问题:
+  因为使用push pop shift unshift splice sort reverse等数组方法操作数组
+  不会触发set,只会触发get
+
+
+解决办法:
+  由于上述7种操作数组方法都是在Array.prototype上面
+  所以我们打算改写数组方法
+  大概就是在普通数组对象和Array.prototype组件创建一个中间原型对象arrayMethods,
+  此原型对象__proto__指向Array.prototype,而普通数组对象的__proto__指向arrayMethods
+
+思路:
+
+  以Array.prototype为原型创建一个arrayMethods的对象
+  使得他的__proto__指向Array.prototype
+  使用Object.setPrototypeOf来帮助我们将普通数组对象的__proto__指向arrayMethod
+
+总结
+  Observer里面需要改进增加对数组对象的操作
+    具体是如果new Observer(value)的value是一个数组对象
+      我们首先需要用Object.setPrototypeOf(value,arrayMethods),
+      将该数组对象的原型指向arrayMethods,
+      接着调用Observer里面遍历数组对象的方法,该方法遍历时会顺带执行defineReactive
+
+      注意push unshift  splice 插入的数据也必须是observe的
+      同时要注意: 改写数组方法时,需要修改this指向  original.apply(this,argument)
+        而这个arguments是个类数组对象,它没有数组方法
+        所以改写时需要专门将其转换为数组
+
+
+
+ https://i.loli.net/2021/05/25/482ZjBuaXiR3pbd.png
+
+
+
+// 得到Array.prototype
+const arrayPrototype = Array.prototype;
+
+// 以Array.prototype为原型创建arrayMethods对象，并暴露
+export const arrayMethods = Object.create(arrayPrototype);
+
+// 要被改写的7个数组方法
+const methodsNeedChange = [
+    'push',
+    'pop',
+    'shift',
+    'unshift',
+    'splice',
+    'sort',
+    'reverse'
+];
+
+methodsNeedChange.forEach(methodName => {
+    // 备份原来的方法，因为push、pop等7个函数的功能不能被剥夺
+    const original = arrayPrototype[methodName];
+    // 定义新的方法
+    def(arrayMethods, methodName, function () {
+        // 恢复原来的功能
+        const result = original.apply(this, arguments);
+        // 把类数组对象变为数组
+        const args = [...arguments];
+        // 把这个数组身上的__ob__取出来，__ob__已经被添加了，为什么已经被添加了？因为数组肯定不是最高层，
+           比如obj.g属性是数组，obj不能是数组，如果是数组,那取值需要通过下标的形式
+           第一次遍历obj这个对象的第一层的时候，已经给g属性（就是这个数组）添加了__ob__属性。
+        const ob = this.__ob__;
+
+        // 有三种方法push\unshift\splice能够插入新项，现在要把插入的新项也要变为observe的
+        let inserted = [];
+
+        switch (methodName) {
+            case 'push':
+            case 'unshift':
+                inserted = args;
+                break;
+            case 'splice':
+                // splice格式是splice(下标, 数量, 插入的新项)
+                inserted = args.slice(2);
+                break;
+        }
+
+        // 判断有没有要插入的新项，让新项也变为响应的
+        if (inserted.length !==0) {
+            ob.observeArray(inserted);
+        }
+
+        console.log('啦啦啦');
+
+        ob.dep.notify();
+
+        return result;
+    }, false);
+});
