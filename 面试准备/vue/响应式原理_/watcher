@@ -1,0 +1,11 @@
+watcher有三种:
+  render-watcher
+  computed-watcher
+
+
+  render-watcher
+    组件实例都有 render-watcher
+    当data/computed中的属性变化时,会调用render-watcher的update来更新视图
+
+  computed-watcher:
+    

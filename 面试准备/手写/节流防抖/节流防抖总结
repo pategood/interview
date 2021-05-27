@@ -38,7 +38,9 @@ var realFun = debounce(function() {
 input.addEventListener('keyup',realFun)
 window.addEventListener('resize', realFun);
 
+
 节流
+
 
 //定时器的写法
 function throttle( fn,wait){
@@ -55,12 +57,11 @@ function throttle( fn,wait){
 }
 
 
-var realFun = debounce(function() {
-  // 滚动中的真正的操作
-  console.log('222');
-}, 250);
+function handle(){
+  
+  console.log(Math.random());
+}
 
 // 绑定监听
-input.addEventListener('keyup',realFun)
-window.addEventListener('resize', realFun);
+window.addEventListener("mousemove",throttle(handle,1000));
 

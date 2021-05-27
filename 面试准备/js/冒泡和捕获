@@ -1,0 +1,94 @@
+
+事件流 说的是 页面接受事件的 顺序
+
+dom事件流:  事件在元素节点之间按照特定的顺序传播的 过程
+    dom事件流分为三大阶段 铺货阶段 当前目标段  冒泡阶段 
+
+
+js代码只能执行 捕获 或者 冒泡  的其中一个
+
+  捕获:
+      js执行事件顺序  自上而下
+
+  冒泡:
+      js执行事件顺序  自底向上
+
+      使用addEventListener给元素绑定事件,绑定时需要指定 冒泡还是捕获  (默认冒泡)
+
+注意 有些事件 本身是没有冒泡的  
+  例如：onblur,onfocus,onmouseenter,onmouseleave
+
+
+阻止事件的冒泡:
+  标  准: 利用事件对象里面的stopPropagation()方法。
+    e.stopPropagation();
+
+  非标准：利用事件对象cancelBubble属性。
+    e.cancelBubble = true
+
+  使用:
+  son.addEventListener('click',function(e){
+      alert('son');
+      e.stopPropagation();//阻止冒泡
+
+      //e.cancelBubble = true;阻止冒泡，IE6/7/8使用的方法。
+  },false);
+
+
+
+取消默认事件:
+
+  w3c : e.preventDefault()，
+  IE  : e.returnValue = false;
+
+  什么是默认事件:
+    例如a标签  提交按钮<input type=”submit”>
+
+
+
+
+
+
+
+
+实际使用加解释:
+ <div class="father">
+   <div class="son">son盒子 </div>
+ </div>
+
+
+ 捕获:
+  var son = document.querySelector('.son');
+  var father = document.querySelector('.father');
+
+    //给子元素绑定点击事件
+    son.addEventListener('click',function(){
+        alert('son');
+    },true);
+    
+    //给父元素绑定点击事件
+    father.addEventListener('click',function(){
+        alert('father');
+    },true);
+
+    //点击son盒子，会先弹出father提示框，然后再弹出son提示框
+
+
+
+
+
+  冒泡:
+  var son = document.querySelector('.son');
+  var father = document.querySelector('.father');
+
+    //给子元素绑定点击事件
+    son.addEventListener('click',function(){
+        alert('son');
+    },false);
+    
+    //给父元素绑定点击事件
+    father.addEventListener('click',function(){
+        alert('father');
+    },false);
+
+    //点击son盒子，会先弹出son提示框，然后再弹出father提示框
