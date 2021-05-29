@@ -23,3 +23,4 @@
 过期-->返回200状态码并且返回最新数据-->
 客户端如第一次接收该资源一样，记下它的cache-control中的max-age、etag、last-modified等。
 
+https://imgconvert.csdnimg.cn/aHR0cHM6Ly9zZWdtZW50ZmF1bHQuY29tL2ltZy9yZW1vdGUvMTQ2MDAwMDAxNzk2MjQxNg?x-oss-process=image/format,png
