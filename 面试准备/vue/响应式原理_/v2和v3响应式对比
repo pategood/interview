@@ -1,0 +1,26 @@
+
+vue3的 Proxy实现响应式
+    Proxy 的代理是针对整个对象的，而不是对象的某个属性
+    重点: Proxy支持代理数组的变化
+
+
+
+
+vue2和vue3响应式对比
+    vue2:
+        数据在data中注册，编译时直接将data中的所有数据绑定监听
+        利用Object.defineProperyty()监听数据的get和set
+        用Observe,Dep,Watcher三个类实现依赖收集
+        数组的响应式需要改写数组方法
+
+        缺点:
+            对于未在html使用的数据也设置了监听
+            多次调用observe进行递归,性能不高
+
+    
+    vue3:
+        利用reactive注册响应式对象，对函数返回值操作
+        利用Proxy劫持数据的get,set,deleteProperty,has,own
+        利用WeakMap,Map,Set来实现依赖收集
+        
+        缺点：使用大量ES6新增特性，旧版本浏览器兼容性差。
