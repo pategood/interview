@@ -14,9 +14,11 @@ js代码只能执行 捕获 或者 冒泡  的其中一个
       js执行事件顺序  自底向上
 
       使用addEventListener给元素绑定事件,绑定时需要指定 冒泡还是捕获  (默认冒泡)
+      删除事件用removeEventListener,用法跟上面一样,也需要指定冒泡还是捕获删除
+
 
 注意 有些事件 本身是没有冒泡的  
-  例如：onblur,onfocus,onmouseenter,onmouseleave
+  例如：onblur(失去焦点),onfocus(获取焦点),onmouseenter,onmouseleave
 
 
 阻止事件的冒泡:
@@ -42,7 +44,7 @@ js代码只能执行 捕获 或者 冒泡  的其中一个
   IE  : e.returnValue = false;
 
   什么是默认事件:
-    例如a标签  提交按钮<input type=”submit”>
+    例如 a标签  提交按钮<input type=”submit”>
 
 
 

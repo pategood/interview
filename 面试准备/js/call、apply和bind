@@ -1,0 +1,43 @@
+
+call、apply和bind的作用都是改变this的指向
+
+call和apply主要区别是 接收的参数方式不同
+  参数是指方法的参数,对象是指this指向的对象
+
+  call:
+    方法名.call(对象,参数1,参数2...)
+
+  apply 
+    方法名.apply(对象,[参数1,参数2,参数3...])
+    数组可以是 类数组 
+
+
+  bind:
+    方法名.call(对象,参数1,参数2...) ()
+  原理:
+    使用了apply进行强绑定,返回的是新函数,需要进行调用
+
+    bind的使用的参数格式和call差不多,
+      如果强行使用数组的格式,则会把数组整体当做一个参数
+
+
+
+手写bind:
+  function bind(fn,obj) {
+    return function(){
+      return fn.apply(obj,arguments)
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+call和apply都是Function.prototype上方法
+
