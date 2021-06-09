@@ -27,7 +27,9 @@ URL输入到页面渲染大体上可以分为网络通信 和 页面渲染 两�
     浏览器解析资源
       解析html生成dom树,解析css资源生成Css object model (CSSOM)
 
-      CSSOM和dom树结合生成 render 树(渲染树) 期间可能参杂着执行js代码(可能引起回流重绘)
+      CSSOM和dom树结合生成 render 树(渲染树) 期间可能参杂着执行js代码
+
+      通过render树   重绘（repaint）和重排（reflow）
 
       (vue项目中:
         首先创建vue实例,初始化事件,初始化render函数

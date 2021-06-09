@@ -1,0 +1,54 @@
+怎么做单页面缓存
+
+
+从详情页返回列表页时需要还原列表页状态的需求，就自己写了个插件，
+只要在router-view外面套个navigation，
+就能像移动原生应用一样缓存导航栈里的页面。
+
+
+
+vuex
+
+
+一.
+  用keep-alive包裹router-view这样的结果可以对页面进行内存缓存
+
+  <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
+
+  缺点:
+  写一个顶级路由，这样有一个问题，
+  就是所有通过路由加载的页面都会缓存在内存中，而对某些页面是不需要缓存的。
+  如果不做处理统一缓存在内存中，那么会造成很大的内存开销
+
+  改进:"
+    思路是控制某一些页面，比如列表等缓存在内存中，某一些不用缓存
+
+    <transition :name="transitionName">
+      <keep-alive>
+        <router-view  v-if="$route.meta.keepAlive"></router-view>
+      </keep-alive>
+    </transition>
+    <transition :name="transitionName">
+      <router-view v-if="!$route.meta.keepAlive"></router-view>
+    </transition>
+
+    路由配置:
+    {path: '/', meta: {Home: "Home", keepAlive: true}, component: require('@/components/Home')},
+
+    解释:
+    transitionName为加载页面时的动画效果名称
+
+    路由配置中配置的keepAlive来动态的使用的router-view。
+    如果keepAlive:true的时候我们使用keep-alive包裹的router-view，
+    否则我们直接使用router-view进行页面加载，
+    这样就能解决哪些页面需要缓存，哪些不需要缓存的问题
+
+    需要在配置路由的时候在meta中配置一个keepAlive:true/false即可。
+    然后义务逻辑往往比我们这个更加复杂，虽然不在进行加载数据，页面缓存在了内存中，
+    但是当我们返回的时候，页面并没有保留在离开这个页面时滚动到的位置，
+    这个问题相对比较好解决。解决方式有多种，下面说一下我的解决思路（简单粗暴）。
+    当页面在滚动的时候我们可以通过监听scroll记录一下页面的滚动位置，
+    然后通过一个变量记录滚动的位置，由于页面是缓存在内存中的，所以变量的值一直有效，在我们返回到页面的时候会执行activated方法。
+    这个方法和methods方法平级，在方法中我们只需要控制页面滚动到记录的位置即可

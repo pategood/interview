@@ -1,0 +1,6 @@
+async/await其实是Promise的语法糖，它能实现的效果都能用then链来实现
+
+
+async声明function是异步的，await等待某个操作完成。
+
+当然语法上强制规定await只能出现在asnyc函数中，

@@ -1,0 +1,9 @@
+
+link标签属于html标签,@import是css提供的方式
+    link除了加载css，还可以做rss(简易联合)，rel属性,@import只能加载css
+
+    link引用的css同时被加载，@import引用的css等到页面加载完成后再加载,
+
+    link的权重的大于@import
+    
+    兼容性的差别 @import不兼容IE5以下的,link完全兼容

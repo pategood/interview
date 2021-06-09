@@ -1,0 +1,16 @@
+什么是图片滚动加载？
+
+当访问一个页面的时候，先把img元素或是其他元素的背景图片路径替换成一张大小为1*1px图片的路径（这样就只需请求一次），只有当图片出现在浏览器的可视区域内时，才设置图片正真的路径，
+让图片显示出来。这就是图片懒加载
+
+屏幕可视窗口大小：对应于图中1、2位置处
+
+　　　　原生方法：window.innerHeight 标准浏览器及IE9+ || document.documentElement.clientHeight 标准浏览器及低版本IE标准模式 ||
+
+   　　　　　　　　document.body.clientHeight 低版本混杂模式
+
+   浏览器窗口顶部与文档顶部之间的距离，也就是滚动条滚动的距离：也就是图中3、4处对应的位置；
+
+　　　　原生方法：window.pagYoffset——IE9+及标准浏览器 || document.documentElement.scrollTop 兼容ie低版本的标准模式 ||
+
+　　　　　　　　　document.body.scrollTop 兼容混杂模式；

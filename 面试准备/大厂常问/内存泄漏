@@ -1,0 +1,4 @@
+导致网站/软件反应迟缓,崩溃,高延迟
+     原因：变量使用没有被回收,造成了内存泄漏,一般由定时器,闭包导致
+     vue如何处理  生命周期  beforeDestroy  销毁前做处理
+     react如何处理  生命周期  componentWillUnmount 销毁做处理

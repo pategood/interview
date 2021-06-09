@@ -30,3 +30,9 @@ event loop:
 
 
 
+宏任务主要有：
+script(整体代码)、setTimeout、setInterval、I/O、UI 交互事件、
+            postMessage、MessageChannel、setImmediate(Node.js 环境)。
+  
+微任务主要有：
+Promise.then、 MutationObserver、 process.nextTick(Node.js 环境)。

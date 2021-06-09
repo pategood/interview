@@ -18,7 +18,6 @@ class Promise {
         })
       })
     }
-
     // reject 
     function reject(data) {
       //状态只能修改一次
