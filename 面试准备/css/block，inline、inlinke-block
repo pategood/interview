@@ -1,7 +1,10 @@
 display:block 
   块级元素,独占一行    
   默认:自动填满父元素宽度
-  可以设置宽高   以及margin和padding
+  可以设置宽高  
+    可以使用padding上下左右都有效，
+      margin只有left和right产生边距效果，
+      但是top和bottom就不行.
 
 
 display:inline
@@ -17,4 +20,6 @@ display:inline
 
 display:inline-block :
   会自动换行
-  具有block的宽度高度特性又具有inline的同行特性
+
+  可设置宽高  能同一行并自动换行 
+  可以设置padding，margin的各个属性值，top，left，bottom，right都能够产生边距效果.

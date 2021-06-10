@@ -5,3 +5,16 @@ promise.all  和promise.face
 promise三个状态
 
 promise如果管理异步操作
+
+
+
+Promise.all()；
+Promise.all方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。
+在我们的异步调用时经常有这样一种场景：我们需要同时调用多个异步操作，
+但希望只有等所有的操作都完成后，我们才去执行响应操作——这就是 Promise.all 的作用。
+ 
+Promise.all 方法可以接收多个 promise 作为参数，以数组的形式，
+              当这些 promise 都成功执行完成后才调用回调函数。
+Promise.race();
+Promise.race()方法是将多个Promise实例包装为一个实例
+Promise.race 是一个有趣的函数——它不是等待所有的 promise 被resolve 或 reject，而是在所有的 promise 中只要有一个执行结束，它就会触发：

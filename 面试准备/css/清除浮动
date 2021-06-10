@@ -1,0 +1,53 @@
+清除浮动
+
+  为什么要清除浮动?
+    解决高度坍塌 问题
+    
+    
+  一. 新建标签 并用clear: both; 关闭浮动
+   
+      在浮动元素后创建一个空元素 
+        <div class="clear"> </div>  
+        
+        .clear{ clear:both }
+
+  二. 父级添加overflow属性（父元素添加overflow:hidden）
+  
+        通过触发BFC方式，实现清除浮动
+
+      缺点：内容多的时候容易造成不会自动换行导致内容被隐藏掉，无法显示要溢出的元素
+
+
+  三. 使用after伪元素清除浮动（推荐使用）
+
+    给浮动元素的容器
+    
+    .clearfix:after{      /*伪元素是行内元素 正常浏览器清除浮动方法*/
+        content: "";
+        display: block;
+        height: 0;
+        clear:both;
+        visibility: hidden;
+    }
+    .clearfix{
+        *zoom: 1;   /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+    }
+
+
+
+  四. 使用before和after双伪元素清除浮动
+
+
+  .clearfix:before,.clearfix:after{
+    content: '';
+    display: table;
+  }
+  .clearfix:after{
+    clear: both;
+  }
+
+  .clearfix{
+        *zoom: 1;
+    }
+
+  

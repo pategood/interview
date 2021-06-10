@@ -40,7 +40,8 @@ window.addEventListener('resize', realFun);
 
 
 节流
-
+懒加载计算滚动条位置  
+商品预览的放大镜 不必每次鼠标移动都计算位置
 
 //定时器的写法
 function throttle( fn,wait){

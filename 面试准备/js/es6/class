@@ -1,5 +1,9 @@
 class
 
+class关键字，class关键字也是原型对象的一个语法糖，
+新的class写法只是让对象原型的写法更加清晰、更像面向对象编程的语法而已,
+本质上面还是一个function
+
 类实质上是一个函数 
 Person===Person.prototype.constructor
 
