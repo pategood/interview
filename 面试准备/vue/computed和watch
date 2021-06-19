@@ -1,0 +1,15 @@
+computed 
+
+  默认只有getter,没有setter
+  每次计算都会创建变量并缓存下来,一般依赖于多个顺序
+
+watch
+  watch的参数可以监听属性的最新变化
+  一个watch对应一个属性
+  watch一般监听非引用类型,如果要监听引用类型需要设置深度监听  
+  watch:{ handler(newVal){
+    deep:true
+  }}
+
+
+  特殊情况下更爱数组需要使用响应式的数组api例如(splice()或 $set)

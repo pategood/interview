@@ -2,4 +2,5 @@ http请求报文和响应报文格式
 
 HTTP 请求分为 请求报头 和 请求主体
 
-请求报头包含请求方法 (POST / GET / INPUT / DELETE等)、URI、协议版本号以及请求头部方法（Accept、Cache-Control…）
+请求报头包含请求方法 (POST / GET / INPUT / DELETE等)、
+  协议版本号以及请求头部方法（Accept、Cache-Control…）

@@ -1,0 +1,34 @@
+flex布局水平居中flex-wrap后让最后一行左对齐:
+
+
+
+
+法一.
+如果每一行列数是固定的，则下面两种方法可以实现最后一行左对齐。
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.list {
+    width: 24%; height: 100px;
+    background-color: skyblue;
+    margin-top: 15px;
+}
+.list:not(:nth-child(4n)) {
+    margin-right: calc(4% / 3);
+}
+
+由于每一列的数目都是固定的，因此，我们可以计算出不同个数列表应当多大的margin值才能保证完全左对齐。
+
+例如，假设每行4个元素，结果最后一行只有3个元素，则最后一个元素的margin-right大小是“列表宽度+间隙大小”的话，那最后3个元素也是可以完美左对齐的。
+
+然后，借助树结构伪类数量匹配技术（这篇文章“伪类匹配列表数目实现微信群头像CSS布局的技巧”中的布局技巧就是借助这种技术实现），我们可以知道最后一行有几个元素。
+
+例如：
+
+.list:last-child:nth-child(4n - 1)说明最后一行，要么3个元素，要么7个元素……
+
+.list:last-child:nth-child(4n - 2)说明最后一行，要么2个元素，要么6个元素……
+
+在本例中，一行就4个元素，因此，我们可以有如下CSS设置：

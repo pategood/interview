@@ -1,0 +1,9 @@
+var str = new String('Mooc)
+console.log(str)        //key :value的形式
+
+返回
+String {"Mooc"}
+  0: "M",
+  1: "o"
+  2: "o"
+  3: "c"

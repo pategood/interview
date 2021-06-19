@@ -1,0 +1,5 @@
+beforeCreate
+
+和created  换成setup
+
+并且vue2的data,watch,computed,methods都在setup里面

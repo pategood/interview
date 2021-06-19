@@ -1,0 +1,16 @@
+beforeCreate -> use setup()
+created -> use setup()
+beforeMount -> onBeforeMount
+mounted -> onMounted
+beforeUpdate -> onBeforeUpdate
+updated -> onUpdated
+beforeDestroy -> onBeforeUnmount
+destroyed -> onUnmounted
+errorCaptured -> onErrorCaptured
+
+
+
+在Vue3中使用两个全新的钩子函数来进行调试。他们是：
+
+onRenderTracked
+onRenderTriggered

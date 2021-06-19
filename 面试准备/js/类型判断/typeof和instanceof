@@ -1,0 +1,64 @@
+数据类型
+      基本类型:
+      undefined null boolean  number string Symbol
+
+      引用类型:
+      Object
+
+      object可分: Array  Function
+
+检测方法:
+    检测类型的方法有
+    typeof     instanceof         Object.prototype.toString.call('1')
+
+    一.  
+      typeof:
+        少了null  多了function
+
+        typeof判断object的结果分为 object 和 function
+        typeof判断引用类型,会根据他原型是否存在[[call]]来区分object和function
+
+        typeof Array   返回function
+        typeof(null)   返回object
+
+
+    二.
+      instanceof:
+        检测类型 返回布尔值
+
+        检测原理: 顺着原型链去查找
+        A instanceof B  检测A的原型链是否有b,找到就返回true
+
+        [] instanceof Array                 //true
+        [] instanceof object                //true
+
+        new Data() instanceof Data          //true
+        new Data() instanceof Object        //true
+
+
+    三.Object.prototype.toString.call()
+
+      原理:将其转换为对象再进行类型判断 
+
+      转为对象后，取得该对象的 [Symbol.toStringTag] 属性值(可能会遍历原型链)作为 tag，
+      如无该属性，或该属性值不为字符串类型，则依下表取得 tag, 
+      然后返回 "[object " + tag + "]" 形式的字符串。
+
+        console.log(Object.prototype.toString.call('1'))   // "[object String]"
+        console.log(Object.prototype.toString.call([]))   //"[object Array]"
+
+
+        Object.prototype.toString.call(null);       // => "[object Null]"
+        Object.prototype.toString.call(undefined);  // => "[object Undefined]"
+  
+
+
+
+obj.toString()的结果和Object.prototype.toString.call(obj)的结果不一样，这是为什么？
+
+  toString为Object的原型方法，
+  而Array 、Function等类型作为Object的实例，都重写了toString方法。
+  所以直接调用数组对象上面的toString方法调用到的实际是重写后的方法，
+  （Function类型返回内容为函数体的字符串，Array类型返回元素组成的字符串.....），
+  并不是Object.prototype中的toString方法。（返回对象的具体类型），
+

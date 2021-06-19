@@ -1,0 +1,51 @@
+spa优点:
+
+  1.整个网站就只有一个Html文件。
+  2.切换页面时,body下的标签发生变化，而页面没有重新加载
+  3.js做本地路由的运行速度快,快是相对于从服务器端获取数据
+      因为它减少了从服务器端获取html文件的请求，只需要通过本地js实现页面的‘切换’。
+
+
+hash模式:
+  通过再连接后添加#+路由名字,根据匹配url的变换,触发hashchange时间,
+  使用location.hash和hashchange事件实现路由。 
+    动态的渲染出页面  
+
+history 模式: 
+使用浏览器的history API  的pushState 和 replaceState
+  通过pushState操作浏览器的history对象,改变url地址,
+  同时结合window.onpopstate 监听浏览器的返回和前进事件来实现无刷新跳转页面
+
+重点是 history模式需要服务端进行配置,否则刷星页面会产生404错误
+        (原因:我们通过history API来操作页面的跳转,而不是真的去服务器请求页面)
+
+
+SPA路由实现之hash:
+  创建Router构造函数,给构造函树原型对象
+  Router
+    routes          路由对象{} 里面放各路径
+    currentHash     根路径
+
+  Router.prototype:
+    添加route属性  ,每个route也就是路径都对应一个回调函数
+    添加refresh  更新页面的属性,属性值是一个更新页面的函数
+    添加属性 init 初始化 
+
+
+route方法 --- 该方法用于在实例化router对象之后，注册路由，对于不同的路由，执行不同的回调函数 。
+refresh方法 --- 在路由切换时，执行该方法刷新页面。
+init方法 --- 在注册完路由之后，执行该方法，该方法主要注册了两个事件，尤其是hashchange事件，非常重要。 
+
+
+SPA路由实现之history:
+  使用h5的history api  
+
+  history.pushState()和history.replaceState()，
+  包含一个事件history.onpopstate，我们先进行简单的介绍：
+
+  pushState向浏览器的历史记录栈中压入一个历史记录
+  replaceState替换当前历史记录栈中的记录
+  onpopstate事件　　
+　　在浏览器前进、后退时触发，一般就是历史记录栈中的指针改变的时候就会触发这个事件了。
+
+ 

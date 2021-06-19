@@ -1,0 +1,7 @@
+ vue2使用object.defineProperty  中的getter和setter实现数据监听
+
+ vue3使用proxy进行监听,用到是时才监听   按需监听
+
+
+ proxy的好处:
+  监听的是一个对象   ,   改进了vue2无法对数组的setter的监听
