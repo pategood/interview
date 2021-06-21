@@ -1,6 +1,28 @@
+Promise
+
+只能由Pending转化为fulfilled或者rejected，fulfilled与rejected不能相互转化
+
+如果then添加了第二个参数，这时候就不会执行catch里面的代码
+如果不存在then，则也不会执行catch里面的代码，因为默认进入fullfilled状态
+
+then里面的resolve报错，catch是可以捕获报错信息，then的第二个参数内报错却 不能捕获
+
+
+
+
+
+链式结构原理是pro.then()或pro.catch()这个函数执行的返回值会返回一个promise对象，
+
+
+promise执行完毕后返回的promise默认进入fulfilled状态"，所以执行完毕后默认执行链式结构中的resolve回调
+
+
+
+
+
+
 
 promise.all  和promise.face
-
 
 promise三个状态
 

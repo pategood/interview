@@ -38,7 +38,7 @@
 
     三.Object.prototype.toString.call()
 
-      原理:将其转换为对象再进行类型判断 
+      原理:将其转换为对象,再取得对象的Symbol.toStringTag的属性值作为tag
 
       转为对象后，取得该对象的 [Symbol.toStringTag] 属性值(可能会遍历原型链)作为 tag，
       如无该属性，或该属性值不为字符串类型，则依下表取得 tag, 

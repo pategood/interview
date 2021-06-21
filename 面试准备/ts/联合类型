@@ -1,0 +1,12 @@
+&   是求并集的意思         
+      不能用于 基本类型   因为基本类型是没有交集的 所以都为never
+
+      一般都是引用类型,  例如 {name:string} & {age:number}
+
+
+      &大多是用在type        type没有总结
+
+
+
+
+type A = number & string      则结果为never
