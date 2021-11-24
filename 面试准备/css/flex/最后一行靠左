@@ -1,9 +1,15 @@
 flex布局水平居中flex-wrap后让最后一行左对齐:
 
 
+法一.   使用calc计算距离通过margin-right实现左对齐\
+法二.   使用伪元素
+法三.    gird
 
 
-法一.
+
+
+
+法一.   使用calc计算距离通过margin-right实现左对齐
 如果每一行列数是固定的，则下面两种方法可以实现最后一行左对齐。
 
 .container {
@@ -32,3 +38,19 @@ flex布局水平居中flex-wrap后让最后一行左对齐:
 .list:last-child:nth-child(4n - 2)说明最后一行，要么2个元素，要么6个元素……
 
 在本例中，一行就4个元素，因此，我们可以有如下CSS设置：
+
+
+法二:  伪元素  (元素个数不固定就不管用了)
+
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.list::after{
+  contentL:'';
+  width: 200px;
+}
+
+法三: gird
