@@ -1,0 +1,14 @@
+使用es6的filter加 indexOf 将符合条件的数据过滤出来
+
+
+<input type="text" placeholder="请输入搜索内容" v-model="searchVal">
+
+return this.list.filter(value => value.name.indexOf(this.searchVal) !== -1)
+
+
+帮助理解:
+articles_array = articles_array.filter(function(item){
+  if(item.title.toLowerCase().indexOf(searchString) !== -1){
+      return item;
+  }
+})
