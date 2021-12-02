@@ -8,8 +8,8 @@ display:block
 
 
 display:inline
-
-  行内元素 无法独占一行   
+  例子: span
+  行内元素 无法独占一行      
   多个元行内素会排在同一行  自动换行
   宽度随内容变化,无法设置宽高
   无法设置width,height
@@ -17,6 +17,10 @@ display:inline
     padding-left, padding-right, margin-left, margin-right都产生边距效果
   垂直方向:
     padding-top, padding-bottom, margin-top, margin-bottom不会有边距效果
+
+display bolck
+  例子: p  div
+  可以设置宽高  但是独占一行
 
 display:inline-block :
   会自动换行

@@ -1,0 +1,25 @@
+any 
+
+number 
+string 
+
+boolean
+
+数组    (number[]、string[]、)
+
+元组  可以包含多种类型,但是位置需提前设定
+      已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同
+
+枚举(enum)
+
+
+void  
+
+null
+
+undefined
+
+
+never
+
+unknown   unknown 类型不能赋值给除了 unknown 或 any 的其他任何类型

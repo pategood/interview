@@ -22,7 +22,6 @@ get 和post 区别
   功能:   GET在浏览器回退时是无害的，而POST会再次提交请求。
 
   本质上: 
-    get和post都是Tcp链接 Get产生一个Tcp数据包 post产生两个Tcp数据包   (火狐浏览器只发送一个)
      
      get会把header和data一并发送出去,  而post是先发header,等服务器响应后再发data,服务器在返回数据
 

@@ -6,7 +6,7 @@
 
       &大多是用在type        type没有总结
 
-
+| 就是或的意思
 
 
 type A = number & string      则结果为never
