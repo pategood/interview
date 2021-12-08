@@ -1,0 +1,91 @@
+什么高度坍塌?
+  父容器没有设置高度,高度是根据子元素撑开起来的,子元素设置浮动后会脱离文档流,不占位置,导致容器的高度为0
+
+清除浮动方法:
+  1.在浮动元素后创建一个空的div,然后设置clear:both;清除浮动
+  2.设置overflow:hidden;触发Bfc  缺点: 超出元素无法显示会被隐藏
+  4.使用after设置一个空的伪元素,然后设置clear:both
+
+
+
+什么是Bfc?
+  块级格式上下文,将内部元素布局与外部隔开
+
+触发Bfc条件?
+  根标签<html>
+  float除了none以外的所有属性
+  overflow非默认值
+  display 为 inline-block flex
+  position的值不为static或releative中的任何一个。
+
+
+行内元素的margin重叠问题
+  块级的margin上下不产生边距,导致margin重叠问题
+  解决:
+    给其中一个元素添加父级,并设置父级触发bfc
+
+块级元素 有什么? 
+  div p   h1-6  ul
+行内元素 有?
+  span img a br换行  input
+
+三种类型元素特点
+  块级元素可以设置宽高,但独占一行
+
+  行内元素 
+    1.不可设置宽高,会自动换行,
+    2.多元素可排在一行
+    3.margin的top和bottom不会产生边距
+    4.行内元素不能包含块级元素
+
+  inline-block
+    可在同一行,可设置宽高
+    让元素产生新的BFC。
+    margin-padding正常
+
+position属性
+  fixed relative absolute sticky 
+
+  relative是依据自身来定位的
+  absolute 是依据最近的定位元素定位,没有则依据body
+  fixed 固定定位
+  sticky 粘性定位
+    使用条件: 
+      父元素不能是overflow:hidden或者overflow:auto属性。
+      必须指定top、bottom、left、right4个值之一，否则只会处于相对定位 
+      父元素的高度不能低于sticky元素的高度 
+
+
+
+  如何实现不占位置的定位
+    给相邻的盒子设置relative在设置相对他进行定位
+
+
+
+
+
+border-box：IE传统盒子模型
+  border + padding + content
+context-box 标准
+  content
+
+css可继承的属性
+  font-size color 
+  不可继承的
+    width height padding margin
+
+
+优先级(就近原则)
+  !important > [ id > class > tag ]
+  !important 比内联优先级高
+
+CSS优先级算法如何计算？
+
+元素选择符： 1
+class选择符： 10
+id选择符：100
+元素标签：1000
+
+!important声明的样式优先级最高，如果冲突再进行计算。
+如果优先级相同，则选择最后出现的样式。
+继承得到的样式的优先级最低。

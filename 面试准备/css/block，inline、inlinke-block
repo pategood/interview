@@ -3,8 +3,7 @@ display:block
   默认:自动填满父元素宽度
   可以设置宽高  
     可以使用padding上下左右都有效，
-      margin只有left和right产生边距效果，
-      但是top和bottom就不行.
+
 
 
 display:inline
@@ -30,7 +29,7 @@ display:inline-block :
 
 
 重点: 
-  块级元素的margin 的top和bottom不会产生边距   
+  行内元素的margin 的top和bottom不会产生边距   
 
   问题:  两个垂直摆放的div,上面设置margin-bottom: 10px,下面那个设置margin-top:10px
 
