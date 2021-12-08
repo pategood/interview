@@ -1,0 +1,18 @@
+
+mvc  全称: Model View Controller
+      Model  数据模型
+      view 视图 处理数据显示的
+      Controller   应用程序处理交互的部分
+
+
+mvvm  
+  model 数据模型
+  ViewModel :  视图模型 
+    将模型转换成视图,将后端传递的数据转换成页面   方式: 数据绑定
+    将视图转换成模型  将页面转换成后端的数据   方式 Dom事件监听
+
+  View和Model的数据变化是同步的。
+
+  Model：数据层模型；
+  View：视图模版；
+  ViewModel：负责具体业务逻辑，监听View和Model的数据变化的同步工作。

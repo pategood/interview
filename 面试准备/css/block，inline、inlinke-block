@@ -27,3 +27,12 @@ display:inline-block :
 
   可设置宽高  能同一行并自动换行 
   可以设置padding，margin的各个属性值，top，left，bottom，right都能够产生边距效果.
+
+
+重点: 
+  块级元素的margin 的top和bottom不会产生边距   
+
+  问题:  两个垂直摆放的div,上面设置margin-bottom: 10px,下面那个设置margin-top:10px
+
+  最后真正的间距为10px,会重叠,   
+  解决办法 : overflow:hidden;(原理 触发bfc)

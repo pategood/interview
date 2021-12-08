@@ -14,3 +14,15 @@ errorCaptured -> onErrorCaptured
 
 onRenderTracked
 onRenderTriggered
+
+
+
+setup执行时机在beforeCreate之前
+在setup中是不能使用data和methods,因为还没初始化好,所以无法通过this访问data/method
+
+setup只能同步,不能异步
+
+
+需要调用异步的时候
+父组件需要使用<suspense>
+或者使用生命周期钩子

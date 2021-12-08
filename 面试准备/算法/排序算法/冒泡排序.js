@@ -11,3 +11,7 @@ function bubbleSort(arr) {
   }
   return arr;
 }
+
+
+O(n ^ 2)
+

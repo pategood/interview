@@ -1,0 +1,59 @@
+
+
+
+(1) super 作为函数调用时，代表父类的构造函数
+
+子类的构造函数必须执行一次 super() 函数
+
+例如:
+class A {}
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+
+(2) super() 只能用在子类的构造函数之中，用在其他地方就会报错
+
+(3) super 作为函数调用时，内部的 this 指的是子类实例
+
+例如:
+      class A {
+      constructor() {
+        this.show();
+      }
+    }
+    class B extends A {
+      constructor() {
+        super();
+      }
+      show(){
+        console.log('实例');
+      }
+      static show(){
+        console.log('子类');
+      }
+    }
+    new B() 　//输出 '实例' ，new B 时触发了 B 的构造函数，所以触发了 super 方法，即触发了父类 A 的构造函数，此时的 this.show 的 this 指的是子类
+
+
+
+(4) super 作为对象时，在普通方法中，指向父类的原型对象；在静态方法中，指向父类的原型对象
+
+例如: 
+  class A {
+    p() {
+      return 2;
+    }
+  }
+  class B extends A {
+    constructor() {
+      super();
+      console.log(super.p()); // 2  此时的super指向父类原型对象，即 A.prototype
+    }
+  }
+  let b = new B();　　//2
+
+
+
+  https://www.cnblogs.com/wenxuehai/p/10361653.html
