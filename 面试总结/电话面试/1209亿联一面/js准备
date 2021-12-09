@@ -63,3 +63,10 @@ import 和 require
   import 是在编译过程中执行，而common的require是同步。
 
   import传的是值引用，require是值拷贝。
+
+
+es6 的promise
+  promise.all和 promise.race
+    都是将多个promise封装成一个实例
+      all是成功的时候返回一个成功数组 顺序固定  失败的时候则返回最先被reject失败状态的值
+      race 只要有一个执行结束就会触发 不管结果本身是成功还是失败
