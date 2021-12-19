@@ -48,7 +48,7 @@ position属性
 
   relative是依据自身来定位的
   absolute 是依据最近的定位元素定位,没有则依据body
-  fixed 固定定位
+  fixed 固定定位 相对于浏览器窗口是固定位置，
   sticky 粘性定位
     使用条件: 
       父元素不能是overflow:hidden或者overflow:auto属性。

@@ -33,7 +33,7 @@ localStorage:
 
 
 
-sessionStorage
+sessionStoraghuihuaqe
     仅在当前会话下有效，关闭页面或浏览器后被清除
     刷新后页面上数据依然存在
 
