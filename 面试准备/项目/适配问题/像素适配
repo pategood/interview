@@ -1,0 +1,9 @@
+rem布局
+  根据分辨率的宽度,计算当前屏幕的分辨率宽度和 设计图 的比例值
+
+
+  将比例值赋给 body的font-size
+
+  rem是相对长度单位  相对于根元素(html元素)的font-size计算
+
+  rem * font-size(html元素)  =   转换后的 px

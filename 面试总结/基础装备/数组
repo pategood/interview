@@ -1,0 +1,15 @@
+map
+
+set
+
+forEach可以改变原数组吗
+  forEach会拷原数组,然后进行修改,因为他的拷贝是浅拷贝,随意在foreach修改数组内的引用类型时,会修改到原数组的数据
+
+
+
+filter和 find区别
+
+
+String  和 toString  区别
+  String()是js的全局函数  toString是Object的原型的方法
+  字符串 str 是String的实例对象 ,对象就基础

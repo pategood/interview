@@ -35,7 +35,8 @@ provide / inject  (跨层级组件通信)
 
 
 兄弟组件通信:
-  数据总线  
+
+  数据总线   原理： 发布订阅模式
     一.创建一个bus.js
         里面
           import Vue from 'vue';  
@@ -43,7 +44,7 @@ provide / inject  (跨层级组件通信)
     二.需要使用eventBud的组件内import
     三、发布Bus消息的组件
       Bus.$emit('getTarget', event.target); 
-    四、接收Bus消息的组件
+    四、订阅Bus消息的组件
       组件接收
         Bus.$on('getTarget', target => {  
           console.log(target);  

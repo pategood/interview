@@ -13,7 +13,12 @@
 
     一.  
       typeof:
+      
+      用于判断数据类型，返回值为6个字符串，分别为string、Boolean、number、function、object、undefined
+
         少了null  多了function
+        
+        typeof在判断null、array、object以及函数实例（new + 函数）时，得到的都是object
 
         typeof判断object的结果分为 object 和 function
         typeof判断引用类型,会根据他原型是否存在[[call]]来区分object和function
@@ -62,3 +67,6 @@ obj.toString()的结果和Object.prototype.toString.call(obj)的结果不一样�
   （Function类型返回内容为函数体的字符串，Array类型返回元素组成的字符串.....），
   并不是Object.prototype中的toString方法。（返回对象的具体类型），
 
+
+
+Object.is方法  类似于 ====

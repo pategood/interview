@@ -1,4 +1,4 @@
-var str = new String('Mooc)
+var str = new String('Mooc')
 console.log(str)        //key :value的形式
 
 返回
