@@ -4,6 +4,18 @@
   ie盒子模型内容区域包括： border + padding + content
   标准和盒子模型内容区域包括： content
 
+css选择器
+  标签选择器 类选择器
+  id选择器  通配符选择器（*表示所以元素）
+  复合选择器（将前面几种选择器结合起来使用）
+
+  后代选择器 （div p {}）
+  子元素选择器（div > p {}）
+  并集选择器 （div，span {}）
+  伪类选择器  
+
+https://blog.csdn.net/m0_63616607/article/details/122602313
+
 vue雙向數據綁定原理
   vue2采用数据劫持结合发布订阅者模式实现，通过defineProperty（）劫持哥哥属性的setter和getter，在数据变动时发布消息的订阅者，出发相应的监听回调来渲染视图
 
@@ -30,6 +42,10 @@ vue-router和location.href区别
 v-if 和 v-for 
 
 性能優化
+  压缩图片大小，切换图片格式，将各类图片进行合并压缩，或者上传CDN
+  缓存利用，合理设置过期时间，首屏之外的图片资源按需加载，静态资源延迟加载
+  请求带宽：压缩文件，开启GZIP 。
+  将多个CSS合并为一个CSS
 
 nginx的配置
 
