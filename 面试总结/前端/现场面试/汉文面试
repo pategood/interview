@@ -1,9 +1,7 @@
 个人介绍：
-  面试官你好，非常荣幸能参加这次面试，我是曾南期，今年7月份毕业，大学本科专业是计算机科学与技术，在校期间，使用vue3+typescript +vant ui仿造B站app开发的移动端学习平台，后端使用的是egg + mysql，
+  面试官你好，非常荣幸能参加这次面试，我是，今年7月份毕业，大学本科专业是计算机科学与技术，在校期间，使用vue3+typescript +vant ui仿造B站app开发的移动端学习平台，后端使用的是egg + mysql，
   主要模块包括文章 视频 个人信息 评论模块 
-    去年7月份，我入职于浙江集享电子商务有限公司，公司的主要技术栈是vue+element ui，负责一些后台管理系统，后来公司因为没有转正名额，所以我在今年一月份时，我入职深圳递四方信息科技有限公司，公司使用的技术栈是react + ahooks+fuison,工作内容是负责GFN业务相关的后台管理系统的日常迭代
-
-
+    在去年7月份，我入职于浙江集享电子商务有限公司，公司的主要技术栈是vue+element ui，负责一些后台管理系统，在今年一月份时，我入职深圳递四方信息科技有限公司，公司使用的技术栈是react+ts+ahooks,工作内容是负责GFN业务相关的后台管理系统的日常迭代
 
 
 
@@ -12,21 +10,22 @@
       vue2是通过Object.definepropert()来劫持对象属性的getter和setter进行操作 并结合发布订阅模式来实现的
       vue3是通过proxy API对数据对象进行监听，按需监听
   2. Composition API
-      vue2的data,watch,computed,methods都在setup里面,
-      beforeCreate 和 created被setup替代 ，并且setup执行时机在beforeCreate之前
+      可以更优雅的将代码逻辑抽离出来，不用写在同一个vue文件内
+        vue2的data,watch,computed,methods都在setup里面,
+        beforeCreate 和 created被setup替代 ，并且setup执行时机在beforeCreate之前
 
   3. v-if 和 v-for的优先级变化
-        vue2 的v-for 优先级高，一起使用会 先渲染在进行v-if判断
+        vue2 的 v-for优先级高，一起使用会 先渲染在进行v-if判断
         vue3 的 v-if 优先级高，先判断在进行for
 
-二.ref toRef toRefs 的区别
+二.reactive ref toRef toRefs 的区别
   reactive 创建一个响应式对象
   ref相当于复制数据，修改时不会影响原数据，但页面会更新
   toRef是引用数据，修改数据会影响原数据，但也没不会更新
   toRefs相当于批量引用数据，其他性质与toRef一样
 
 
-三 .二维码登录实现？ pc电脑如何知道用户扫码
+三. 二维码登录实现？ pc电脑如何知道用户扫码
   1. PC页面发起请求获取二维码和key，服务器返回二维码和key，
   2. pc显示二维码并轮询登录状态
   3. 手机进行扫码后 点击确认登录，向服务器发起请求
@@ -89,6 +88,25 @@
 
 十一. 实现v-model
 
+ props: {
+    value: String,
+  },
+  model: {
+    prop: 'value',        // 指定 v-model 要绑定的参数叫什么名字，来自于 props 中定义的参数
+    event: 'change',    // 指定要触发的事件名字，将被用于 $emit
+  },
+  computed: {
+    input: {
+      get() {
+        return this.value;
+      },
+      set(val) {
+        this.$emit('change', val);    // 触发
+      }
+    }
+  }
+
+https://blog.csdn.net/Dobility/article/details/110147985
 
 十二. vue组件通信，10个组件，每个组件不需要设置事件通知父组件更新
 
@@ -102,7 +120,31 @@
 js扁平化方法 flat reduce+concat  toString + split + map
 
 tree结构获取id 递归进行遍历数组
+var arr=[{
+  id:1,
+  children:[{
+    id:2,
+    children:null
+    }],
+  },
+  {
+    id:3,
+    children:null,
+  },
+];
 
+
+function getId(arr){
+  var newArr=[];
+  for(var i=0;i<arr.length;i++){
+    newArr.push(arr[i].id);
+    if(arr[i].children!=null){ //在使用递归调用的时候，不要忘记了将递归计算出来的值和外层的值进行合并
+      newArr.push(arguments.callee(arr[i].children)[0]); //这里递归调用产生的数
+      //newArr.concat(arguments.callee(arr[i].children)); //这里递归调用产生的数
+    }
+  }
+  return newArr;
+}
 
 
 
