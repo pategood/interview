@@ -1,0 +1,20 @@
+v-model中的实现原理及如何自定义v-model ?
+  v-model 可以看成是 value+input 方法的语法糖(组件)
+  自定义：自己写 model 属性，里面放上 prop 和 event
+
+为什么Vue采用异步渲染呢？
+  Vue 是组件级更新，如果不采用异步更新，那么每次更新数据都会对当前组件进行重新渲染，所以为了性能， Vue 会在本轮数据更新后，在异步更新视图。核心思想 nextTick 。
+
+
+父子组件渲染顺序?
+1、父子组件的加载顺序为
+父beforeCreate ->父created ->父beforeMounted ->子beforeCreated ->子created ->子beforeMounted ->子mounted -> 父mounted
+
+2、父组件更新顺序为
+父beforeUpdate->父updated
+
+3、子组件更新顺序为
+父beforeUpdate->子beforeUpdate->子updated->父updated
+
+4、父子组件销毁顺序为
+父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
