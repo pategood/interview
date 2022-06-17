@@ -24,7 +24,7 @@ function flatten(arr) {
   }
 
 
-// 二.toString  + split  
+// 二.toString  + split  + map
 // 先转化为字符串在用split分割  最后用map转换为数字
 
 function flatten(arr){
