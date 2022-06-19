@@ -5,7 +5,9 @@ set
 forEach可以改变原数组吗
   forEach会拷原数组,然后进行修改,因为他的拷贝是浅拷贝,随意在foreach修改数组内的引用类型时,会修改到原数组的数据
 
-
+forEach和map的区别
+(1)map()会分配内存空间存储新数组并返回，forEach()不会返回数据。
+(2)forEach()允许callback更改原始数组的元素。map()返回新的数组。
 
 filter和 find区别
 
