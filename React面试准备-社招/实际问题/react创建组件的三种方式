@@ -1,0 +1,43 @@
+react创建组件的三种方式：
+    函数式定义的组件（无状态组件）
+    es5 React.createClass 
+    es6 extends React.component （面向对象）
+
+    函数式 
+        一个函数 retrun 一段html
+
+    es5 const Com = React.createClass({
+        render: function() {
+            retrun <P>组件</P>
+        }
+    })
+
+    es6 
+        class Com extends React.component{
+            constructor(props) {
+                super(props)
+            }
+            render() {
+                return {
+                     <P>组件</P>
+                }
+            }
+        }
+
+        三种方式的特点和区别：
+        函数式： 创建的组件不会被实例化
+                组件通过render实现，不需要多余的内存，渲染的性能比较高
+                组件不能访问this
+                无法访问生命周期（底层的实现是无组件的形式）
+            使用场景： 用来拆分比较复杂的组件
+
+        es5 React.createClass
+            使用原生js来创建组件的
+            组件可以实例化  有this 有生命周期
+            自动绑定函数，内存开销比函数式大 
+
+        es6 extends React.Component（继承）
+            extends创建的组件 没有自动绑定this 需要手动绑定
+            组件属性类型： propTypes props 都是类的实例 static修饰
+            state是需要在constructor中声明
+
